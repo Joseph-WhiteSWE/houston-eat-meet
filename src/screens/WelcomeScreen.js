@@ -8,21 +8,23 @@ import {
 
 export default function WelcomeScreen() {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView className="flex-1 justify-center items-center space-y-10 bg-black">
       <StatusBar style="light" />
-      <Image
-        source={require("../../assets/img/hem.jpg")}
-        style={{ width: hp(45), height: hp(35) }}
-      />
+      <View>
+        <Image
+          source={require("../../assets/img/hem.jpg")}
+          style={{ width: 500, height: 300 }}
+        />
+      </View>
     </SafeAreaView>
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "black",
-  },
-})
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center",
+//     backgroundColor: "black",
+//   },
+// })
