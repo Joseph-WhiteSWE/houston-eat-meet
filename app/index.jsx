@@ -25,7 +25,7 @@ export default function Index() {
           style={{
             fontSize: hp(5),
           }}
-          className="text-white font-bold tracking-wide"
+          className="text-white tracking-wide font-bold"
         >
           Meet Now?
         </Text>
@@ -38,13 +38,13 @@ export default function Index() {
             height: hp(7),
             width: wp(80),
           }}
-          className=" bg-cyan-400 flex items-center justify-center rounded-full border-[2px] border-white mt-5"
+          className=" bg-cyan-400 flex items-center justify-center rounded-full  mt-5"
         >
           <Text
             style={{
               fontSize: hp(3),
             }}
-            className="text-white tracking-wide"
+            className="text-white tracking-wider "
           >
             Tap In!
           </Text>
