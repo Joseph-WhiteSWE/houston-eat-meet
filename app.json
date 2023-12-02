@@ -1,13 +1,14 @@
 {
   "expo": {
-    "name": "houston-eat-meet",
-    "slug": "houston-eat-meet",
+    "name": "houston-eat-meet-app",
+    "slug": "houston-eat-meet-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "icon": "./assets/images/icon.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -19,24 +20,20 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "package": "com.white.joseph.jr.houstoneatmeet"
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "514c8c76-6819-4f0d-aa4b-8483948e2140"
       }
     },
-    "runtimeVersion": {
-      "policy": "appVersion"
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
     },
-    "updates": {
-      "url": "https://u.expo.dev/514c8c76-6819-4f0d-aa4b-8483948e2140"
+    "plugins": [
+      "expo-router"
+    ],
+    "experiments": {
+      "typedRoutes": true
     }
   }
 }
