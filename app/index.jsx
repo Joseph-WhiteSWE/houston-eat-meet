@@ -25,7 +25,7 @@ export default function Index() {
           style={{
             fontSize: hp(5),
           }}
-          className="text-white tracking-wide font-bold"
+          className="text-white tracking-wider font-bold"
         >
           Meet Now?
         </Text>
@@ -33,7 +33,7 @@ export default function Index() {
 
       <View>
         <TouchableOpacity
-          onPress={() => router.push("home")}
+          onPress={() => router.push("screens/home")}
           style={{
             height: hp(7),
             width: wp(80),
