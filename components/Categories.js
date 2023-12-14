@@ -59,7 +59,7 @@ export default function Categories() {
       {groups.map((item, index) => (
         <View>
           <View
-            key={index}
+            key={item.id}
             style={{
               width: 60,
               height: 60,
