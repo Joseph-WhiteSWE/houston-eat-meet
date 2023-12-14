@@ -37,8 +37,9 @@ export default function Index() {
           style={{
             height: hp(7),
             width: wp(80),
+            backgroundColor: "#0ea5e9",
           }}
-          className=" bg-cyan-500 flex items-center justify-center rounded-full  mt-5"
+          className="flex items-center justify-center rounded-full  mt-5"
         >
           <Text
             style={{
