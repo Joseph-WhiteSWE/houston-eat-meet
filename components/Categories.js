@@ -1,8 +1,8 @@
-import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
+import { View, Text, ScrollView, Image, Pressable } from "react-native";
 import React from "react";
 
 export default function Categories({ activeCategory, setActiveCategory }) {
-  const groups = [
+  const categories = [
     {
       id: 0,
       name: "Brunch",
@@ -56,15 +56,12 @@ export default function Categories({ activeCategory, setActiveCategory }) {
   ];
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-      {groups.map((item, index) => {
+      {categories.map((item, index) => {
         let isActive = item.name == activeCategory;
         let activeButton = isActive ? "bg-white" : "bg-black";
 
         return (
-          <TouchableOpacity
-            key={index}
-            onPress={() => setActiveCategory(item.name)}
-          >
+          <Pressable key={index} onPress={() => setActiveCategory(item.name)}>
             <View>
               <View
                 className={activeButton}
@@ -102,7 +99,7 @@ export default function Categories({ activeCategory, setActiveCategory }) {
                 {item?.name}
               </Text>
             </View>
-          </TouchableOpacity>
+          </Pressable>
         );
       })}
     </ScrollView>
