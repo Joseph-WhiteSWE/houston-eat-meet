@@ -1,7 +1,7 @@
-import { View, Text, ScrollView, Image } from "react-native";
+import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import React from "react";
 
-export default function Categories() {
+export default function Categories({ activeCategory, setActiveCategory }) {
   const groups = [
     {
       id: 0,
@@ -56,46 +56,55 @@ export default function Categories() {
   ];
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-      {groups.map((item, index) => (
-        <View>
-          <View
+      {groups.map((item, index) => {
+        let isActive = item.name == activeCategory;
+        let activeButton = isActive ? "bg-white" : "bg-black";
+
+        return (
+          <TouchableOpacity
             key={index}
-            style={{
-              width: 60,
-              height: 60,
-              borderColor: "#E0E0E0",
-              borderWidth: 1,
-              paddingVertical: 5,
-              paddingHorizontal: 1,
-              borderRadius: 5,
-              marginHorizontal: 10,
-              marginVertical: 10,
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "black",
-            }}
+            onPress={() => setActiveCategory(item.name)}
           >
-            <Image
-              source={item.image}
-              style={{
-                width: 50,
-                height: 50,
-              }}
-            />
-          </View>
-          <Text
-            style={{
-              color: "white",
-              fontSize: 13,
-              fontWeight: "500",
-              marginVertical: 6,
-              textAlign: "center",
-            }}
-          >
-            {item?.name}
-          </Text>
-        </View>
-      ))}
+            <View>
+              <View
+                className={activeButton}
+                style={{
+                  width: 60,
+                  height: 60,
+                  borderColor: "#E0E0E0",
+                  borderWidth: 1,
+                  paddingVertical: 5,
+                  paddingHorizontal: 1,
+                  borderRadius: 5,
+                  marginHorizontal: 10,
+                  marginVertical: 10,
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Image
+                  source={item.image}
+                  style={{
+                    width: 50,
+                    height: 50,
+                  }}
+                />
+              </View>
+              <Text
+                style={{
+                  color: "white",
+                  fontSize: 13,
+                  fontWeight: "500",
+                  marginVertical: 6,
+                  textAlign: "center",
+                }}
+              >
+                {item?.name}
+              </Text>
+            </View>
+          </TouchableOpacity>
+        );
+      })}
     </ScrollView>
   );
 }
