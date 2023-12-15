@@ -1,16 +1,20 @@
-import { View, Text, ScrollView, TextInput } from "react-native";
+import { View, Text, TextInput } from "react-native";
 import React, { useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import Categories from "../../components/Categories";
+import Stores from "../../components/Stores";
+import { ScrollView } from "react-native-virtualized-view";
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("Brunch");
+  const [categories, setCategories] = useState([]);
 
   return (
     <ScrollView
       style={{
         flex: 1,
         backgroundColor: "black",
+        paddingTop: 25,
       }}
     >
       {/* search bar: start */}
@@ -55,8 +59,11 @@ export default function Home() {
           color: "white",
         }}
       >
-        ALL STORES
+        STORES
       </Text>
+      <View style={{ marginTop: 25 }}>
+        <Stores />
+      </View>
     </ScrollView>
   );
 }
