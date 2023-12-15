@@ -1,9 +1,11 @@
 import { View, Text, ScrollView, TextInput } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import Categories from "../../components/Categories";
 
 export default function Home() {
+  const [activeCategory, setActiveCategory] = useState("Brunch");
+
   return (
     <ScrollView
       style={{
@@ -26,7 +28,7 @@ export default function Home() {
           placeholder="Seach For Entertainment"
           placeholderTextColor={"white"}
         />
-        <AntDesign name="search1" size={24} color="#0ea5e9" />
+        <AntDesign name="search1" size={24} color="#d946ef" />
       </View>
       {/* search bar: end */}
       <Text
@@ -40,7 +42,10 @@ export default function Home() {
       >
         EXPLORE
       </Text>
-      <Categories />
+      <Categories
+        activeCategory={activeCategory}
+        setActiveCategory={setActiveCategory}
+      />
       <Text
         style={{
           textAlign: "center",
