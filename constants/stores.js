@@ -15,7 +15,7 @@ export const stores = [
     ],
   },
   {
-    category: "Restaurants",
+    category: "Restuarants",
     items: [
       {
         name: "Uchi",
@@ -120,7 +120,7 @@ export const stores = [
     ],
   },
   {
-    category: "Bar",
+    category: "Bars",
     items: [
       {
         name: "Wooster's Garden",
@@ -135,7 +135,7 @@ export const stores = [
     ],
   },
   {
-    category: "Cigar",
+    category: "Cigars",
     items: [
       {
         name: "Five Central",

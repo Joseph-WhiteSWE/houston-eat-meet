@@ -2,7 +2,10 @@ import React from "react";
 import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import { stores } from "../constants/stores";
 
-export default function Stores() {
+export default function Stores({ activeCategory }) {
+  const filteredStores = stores
+    .filter(store => store.category === activeCategory)
+    .flatMap(store => store.items);
   return (
     <View>
       <Text
@@ -17,9 +20,9 @@ export default function Stores() {
         STORES
       </Text>
       <FlatList
-        data={stores}
+        data={filteredStores}
         numColumns={2}
-        keyExtractor={item => item.category}
+        keyExtractor={(item, index) => String(index)}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 50, paddingTop: 20 }}
         columnWrapperStyle={{
@@ -32,35 +35,32 @@ export default function Stores() {
     </View>
   );
 }
-const StoreCard = ({ item, index }) => {
+
+const StoreCard = ({ item }) => {
   return (
-    <View>
-      {item.items.map((item, index) => (
-        <TouchableOpacity key={index}>
-          <Text
-            style={{
-              width: 90,
-              height: 60,
-              borderColor: "#E0E0E0",
-              borderWidth: 1,
-              paddingVertical: 20,
-              paddingHorizontal: 1,
-              borderRadius: 5,
-              marginHorizontal: 10,
-              marginVertical: 10,
-              alignItems: "center",
-              justifyContent: "center",
-              color: "white",
-              fontSize: 13,
-              fontWeight: "500",
-              textAlign: "center",
-              backgroundColor: "#d946ef",
-            }}
-          >
-            {item.name}
-          </Text>
-        </TouchableOpacity>
-      ))}
-    </View>
+    <TouchableOpacity>
+      <Text
+        style={{
+          width: 90,
+          height: 60,
+          borderColor: "#E0E0E0",
+          borderWidth: 1,
+          paddingVertical: 20,
+          paddingHorizontal: 1,
+          borderRadius: 5,
+          marginHorizontal: 10,
+          marginVertical: 10,
+          alignItems: "center",
+          justifyContent: "center",
+          color: "white",
+          fontSize: 13,
+          fontWeight: "500",
+          textAlign: "center",
+          backgroundColor: "#d946ef",
+        }}
+      >
+        {item.name.length > 12 ? item.name.slice(0, 12) + "..." : item.name}
+      </Text>
+    </TouchableOpacity>
   );
 };
