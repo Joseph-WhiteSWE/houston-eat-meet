@@ -1,22 +1,56 @@
 import { View, Text, TextInput } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import Categories from "../../components/Categories";
 import Stores from "../../components/Stores";
 import { ScrollView } from "react-native-virtualized-view";
+import { stores } from "../../constants/stores";
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("Brunch");
-  const [categories, setCategories] = useState([]);
+  const [getStores, setGetStores] = useState([]);
+
+  useEffect(() => {
+    getStoresInArray(activeCategory);
+  }, []);
+
+  const handleChangeCategory = category => {
+    getStoresInArray(category);
+    setActiveCategory(category);
+  };
+
+  // const categories = stores.map(store => store.category);
+  // const storeNames = stores.flatMap(store =>
+  //   store.items.map(item => item.name)
+  // );
+
+  const getStoresInArray = category => {
+    const filteredStores = stores
+      .filter(store => store.category === category)
+      .flatMap(store => store.items);
+    setGetStores(filteredStores);
+    // console.log(filteredStores);
+  };
+  // const getStoresInArray = () => {
+  //   const response = categories;
+  //   console.log(response);
+  //   // if(response){
+  //   //   setGetStores(response.getStores)
+  //   // }
+  // };
 
   return (
-    <ScrollView
+    <SafeAreaView
       style={{
         flex: 1,
         backgroundColor: "black",
         paddingTop: 25,
       }}
     >
+      <StatusBar style="light" />
+
       {/* search bar: start */}
       <View
         className="flex-row items-center justify-between px-2 py-2 rounded-md my-5"
@@ -46,24 +80,15 @@ export default function Home() {
       >
         EXPLORE
       </Text>
+
       <Categories
         activeCategory={activeCategory}
-        setActiveCategory={setActiveCategory}
+        handleChangeCategory={handleChangeCategory}
       />
-      <Text
-        style={{
-          textAlign: "center",
-          marginTop: 7,
-          letterSpacing: 4,
-          marginBottom: 5,
-          color: "white",
-        }}
-      >
-        STORES
-      </Text>
-      <View style={{ marginTop: 25 }}>
-        <Stores />
+      {/* flex 100 removes the large gap between explore and stores */}
+      <View style={{ flex: 100 }}>
+        <Stores storeData={getStores} />
       </View>
-    </ScrollView>
+    </SafeAreaView>
   );
 }

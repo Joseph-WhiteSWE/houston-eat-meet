@@ -9,12 +9,14 @@ export default function Layout() {
         name="index"
         options={{
           title: "Landing Page",
+          headerShown: false,
         }}
       />
       <Stack.Screen
         name="screens/home"
         options={{
           title: "Home Screen",
+          headerShown: false,
         }}
       />
       {/* <Stack.Screen
@@ -25,14 +27,14 @@ export default function Layout() {
         }}
       /> */}
       {/* <Stack.Screen
-        name="screens/sections"
+        name="screens/stores"
         options={{
           title: "section",
           // headerShown: false,
         }}
       /> */}
       {/* <Stack.Screen
-        name="screens/randomize"
+        name="screens/randomizeStore"
         options={{
           title: "randomize",
           // headerShown: false,
