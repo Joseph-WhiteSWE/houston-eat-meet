@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import React from "react";
 import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import { stores } from "../constants/stores";
@@ -37,8 +38,15 @@ export default function Stores({ activeCategory }) {
 }
 
 const StoreCard = ({ item }) => {
+  const router = useRouter();
+
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => router.push("screens/storeDetails")}>
+      {/* 
+      <View> 
+      <Image /> 
+      </View> 
+      */}
       <Text
         style={{
           width: 130,

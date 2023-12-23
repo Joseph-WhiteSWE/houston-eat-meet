@@ -19,13 +19,14 @@ export default function Layout() {
           headerShown: false,
         }}
       />
-      {/* <Stack.Screen
-        name="screens/categories"
+      <Stack.Screen
+        name="screens/storeDetails"
         options={{
-          title: "categories",
-          // headerShown: false,
+          title: "Store Details",
+          presentation: "fullScreenModal",
+          headerShown: false,
         }}
-      /> */}
+      />
       {/* <Stack.Screen
         name="screens/stores"
         options={{
