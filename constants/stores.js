@@ -15,7 +15,7 @@ export const stores = [
     ],
   },
   {
-    category: "Restaurants",
+    category: "Restuarants",
     items: [
       {
         name: "Uchi",
@@ -40,6 +40,20 @@ export const stores = [
         region: "Briar Forest",
         price: "$$",
         rating: 4.3,
+        image: "",
+      },
+    ],
+  },
+  {
+    category: "Vegan",
+    items: [
+      {
+        name: "Heartbeet",
+        description: "",
+        address: "14714 Memorial Dr, Houston, TX 77079",
+        region: "Memorial",
+        price: "$$",
+        rating: 4.6,
         image: "",
       },
     ],
@@ -105,7 +119,7 @@ export const stores = [
     ],
   },
   {
-    category: "Views",
+    category: "Vibes",
     items: [
       {
         name: "Bar 5015",
@@ -120,7 +134,7 @@ export const stores = [
     ],
   },
   {
-    category: "Bar",
+    category: "Bars",
     items: [
       {
         name: "Wooster's Garden",
@@ -135,7 +149,22 @@ export const stores = [
     ],
   },
   {
-    category: "Cigar",
+    category: "Activities",
+    items: [
+      {
+        name: "K1 Speed",
+        description:
+          "Chain of indoor racing centers featuring electric go-karting for all skill levels, plus food.",
+        address: "14900 Northwest Fwy, Houston, TX 77040",
+        region: "North West",
+        price: null,
+        rating: null,
+        image: "",
+      },
+    ],
+  },
+  {
+    category: "Cigars",
     items: [
       {
         name: "Five Central",
