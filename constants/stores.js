@@ -45,6 +45,20 @@ export const stores = [
     ],
   },
   {
+    category: "Vegan",
+    items: [
+      {
+        name: "Heartbeet",
+        description: "",
+        address: "14714 Memorial Dr, Houston, TX 77079",
+        region: "Memorial",
+        price: "$$",
+        rating: 4.6,
+        image: "",
+      },
+    ],
+  },
+  {
     category: "International",
     items: [
       {
@@ -105,7 +119,7 @@ export const stores = [
     ],
   },
   {
-    category: "Views",
+    category: "Vibes",
     items: [
       {
         name: "Bar 5015",
@@ -130,6 +144,21 @@ export const stores = [
         region: "South Central Houston",
         price: "$$",
         rating: 4.5,
+        image: "",
+      },
+    ],
+  },
+  {
+    category: "Activities",
+    items: [
+      {
+        name: "K1 Speed",
+        description:
+          "Chain of indoor racing centers featuring electric go-karting for all skill levels, plus food.",
+        address: "14900 Northwest Fwy, Houston, TX 77040",
+        region: "North West",
+        price: null,
+        rating: null,
         image: "",
       },
     ],

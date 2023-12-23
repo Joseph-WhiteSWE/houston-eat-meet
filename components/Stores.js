@@ -41,7 +41,7 @@ const StoreCard = ({ item }) => {
     <TouchableOpacity>
       <Text
         style={{
-          width: 90,
+          width: 130,
           height: 60,
           borderColor: "#E0E0E0",
           borderWidth: 1,
@@ -59,7 +59,7 @@ const StoreCard = ({ item }) => {
           backgroundColor: "#d946ef",
         }}
       >
-        {item.name.length > 12 ? item.name.slice(0, 12) + "..." : item.name}
+        {item.name.length > 18 ? item.name.slice(0, 18) + "..." : item.name}
       </Text>
     </TouchableOpacity>
   );
