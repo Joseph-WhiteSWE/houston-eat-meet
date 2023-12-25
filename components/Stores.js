@@ -1,13 +1,53 @@
 import { useRouter } from "expo-router";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, FlatList, TouchableOpacity } from "react-native";
-import { stores } from "../constants/stores";
+import { db } from "../firebaseConfig";
+import { collection, getDocs } from "firebase/firestore";
 
 export default function Stores({ activeCategory }) {
-  const filteredStores = stores
-    .filter(store => store.category === activeCategory)
-    .flatMap(store => store.items);
+  const [stores, setStores] = useState([]);
+
+  useEffect(() => {
+    const storeCollections = [
+      "brunch",
+      "dinner",
+      "seafood",
+      "vegan",
+      "international",
+      "soul-food",
+      "bbq",
+      "sweet-tooth",
+      "vibes",
+      "bars",
+      "activities",
+      "cigars",
+    ];
+    const getStoreData = async storeRef => {
+      const data = await getDocs(storeRef);
+      return data.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+    };
+
+    const getStores = async () => {
+      try {
+        const storePromises = storeCollections.map(storeName =>
+          getStoreData(collection(db, storeName))
+        );
+        const storeArrays = await Promise.all(storePromises);
+        setStores(storeArrays.flat());
+      } catch (error) {
+        console.error("Error fetching documents:", error);
+      }
+    };
+
+    getStores();
+  }, []);
+
+  const filteredStores = stores.filter(
+    store => store.category === activeCategory
+  );
+
   return (
+    // loading screen here
     <View>
       <Text
         style={{
@@ -42,33 +82,33 @@ const StoreCard = ({ item }) => {
 
   return (
     <TouchableOpacity onPress={() => router.push("screens/storeDetails")}>
-      {/* 
-      <View> 
-      <Image /> 
-      </View> 
-      */}
-      <Text
+      <View
         style={{
-          width: 130,
-          height: 60,
-          borderColor: "#E0E0E0",
+          width: 150,
+          height: 50,
+          borderColor: "white",
           borderWidth: 1,
-          paddingVertical: 20,
-          paddingHorizontal: 1,
-          borderRadius: 5,
-          marginHorizontal: 10,
-          marginVertical: 10,
+          // paddingVertical: 15,
+          paddingHorizontal: 10,
+          borderRadius: 30,
+          // marginHorizontal: 10,
+          // marginVertical: 10,
           alignItems: "center",
           justifyContent: "center",
-          color: "white",
+
           fontSize: 13,
           fontWeight: "500",
           textAlign: "center",
           backgroundColor: "#d946ef",
         }}
       >
-        {item.name.length > 18 ? item.name.slice(0, 18) + "..." : item.name}
-      </Text>
+        {/* 
+      <Image /> 
+      */}
+        <Text style={{ color: "white" }}>
+          {item.name.length > 18 ? item.name.slice(0, 18) + "..." : item.name}
+        </Text>
+      </View>
     </TouchableOpacity>
   );
 };

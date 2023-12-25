@@ -38,6 +38,8 @@ export default function Index() {
             height: hp(7),
             width: wp(80),
             backgroundColor: "#0ea5e9",
+            borderColor: "white",
+            borderWidth: 1,
           }}
           className="flex items-center justify-center rounded-full  mt-5"
         >

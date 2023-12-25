@@ -23,7 +23,7 @@ export default function Home() {
       <View
         className="flex-row items-center justify-between px-2 py-2 rounded-md my-5"
         style={{
-          borderColor: "#c0c0c0",
+          borderColor: "white",
           borderWidth: 1,
           width: 325,
           marginLeft: "auto",
