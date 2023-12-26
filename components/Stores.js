@@ -4,7 +4,7 @@ import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import { db } from "../firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 
-export default function Stores({ activeCategory }) {
+export default function Stores({ activeCategory, searchField }) {
   const [stores, setStores] = useState([]);
 
   useEffect(() => {
@@ -42,9 +42,13 @@ export default function Stores({ activeCategory }) {
     getStores();
   }, []);
 
-  const filteredStores = stores.filter(
-    store => store.category === activeCategory
-  );
+  // search bar function
+  const filteredStores = stores.filter(store => {
+    return (
+      store.category === activeCategory &&
+      store.name.toLowerCase().includes(searchField.toLowerCase())
+    );
+  });
 
   return (
     // loading screen here
@@ -92,7 +96,7 @@ const StoreCard = ({ item }) => {
           paddingHorizontal: 10,
           borderRadius: 30,
           // marginHorizontal: 10,
-          // marginVertical: 10,
+          marginBottom: 10,
           alignItems: "center",
           justifyContent: "center",
 
