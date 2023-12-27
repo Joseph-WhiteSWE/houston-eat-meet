@@ -8,6 +8,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("Brunch");
+  const [searchField, setSearchField] = useState("");
 
   return (
     <SafeAreaView
@@ -23,7 +24,7 @@ export default function Home() {
       <View
         className="flex-row items-center justify-between px-2 py-2 rounded-md my-5"
         style={{
-          borderColor: "#c0c0c0",
+          borderColor: "white",
           borderWidth: 1,
           width: 325,
           marginLeft: "auto",
@@ -33,6 +34,9 @@ export default function Home() {
         <TextInput
           placeholder="Seach For Entertainment"
           placeholderTextColor={"white"}
+          color="white"
+          onChangeText={text => setSearchField(text)}
+          value={searchField}
         />
         <AntDesign name="search1" size={24} color="#d946ef" />
       </View>
@@ -55,7 +59,7 @@ export default function Home() {
       {/* flex 100 removes the large gap between explore and stores */}
       {/* <View style={{ flex: 1 }}> */}
       <View style={{ flex: 100 }}>
-        <Stores activeCategory={activeCategory} />
+        <Stores activeCategory={activeCategory} searchField={searchField} />
       </View>
     </SafeAreaView>
   );

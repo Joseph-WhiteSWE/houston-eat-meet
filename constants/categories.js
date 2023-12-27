@@ -4,7 +4,7 @@ export const categories = [
     image: require("../assets/images/hem-images/pancake.png"),
   },
   {
-    name: "Restuarants",
+    name: "Dinner",
     image: require("../assets/images/hem-images/taco.png"),
   },
   {

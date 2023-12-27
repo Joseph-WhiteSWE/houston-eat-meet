@@ -17,7 +17,7 @@ export default function Categories({ activeCategory, setActiveCategory }) {
                 style={{
                   width: 60,
                   height: 60,
-                  borderColor: "#E0E0E0",
+                  borderColor: "white",
                   borderWidth: 1,
                   paddingVertical: 5,
                   paddingHorizontal: 1,
