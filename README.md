@@ -6,7 +6,7 @@
 <p>Side aproject 2: https://github.com/Joseph-WhiteSWE/food-app</p>
 
 <h3>Third Snapshot</h3>
-<div><b>Click here:</b></div> https://github.com/Joseph-WhiteSWE/houston-eat-meet/assets/122577026/408487dd-1e07-4f29-99ba-23664ee6e698
+<div><b>Click here:</b></div> https://github.com/Joseph-WhiteSWE/houston-eat-meet/assets/122577026/494b0060-8791-4e49-ba36-ddf40e5525c5
 
 <h3>Second Snapshot</h3>
 <div><b>Click here:</b></div> https://github.com/Joseph-WhiteSWE/houston-eat-meet/assets/122577026/c9cd6e0b-5cbd-4a8e-8678-9df475f9169a
