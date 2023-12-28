@@ -1,11 +1,20 @@
 import { useRouter } from "expo-router";
 import React, { useState, useEffect } from "react";
-import { View, Text, FlatList, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  ActivityIndicator,
+  SafeAreaView,
+  StatusBar,
+} from "react-native";
 import { db } from "../firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 
 export default function Stores({ activeCategory, searchField }) {
   const [stores, setStores] = useState([]);
+  const [isLoading, setisLoading] = useState(true);
 
   useEffect(() => {
     const storeCollections = [
@@ -34,8 +43,10 @@ export default function Stores({ activeCategory, searchField }) {
         );
         const storeArrays = await Promise.all(storePromises);
         setStores(storeArrays.flat());
+        setisLoading(false);
       } catch (error) {
         console.error("Error fetching documents:", error);
+        setisLoading(false);
       }
     };
 
@@ -50,8 +61,26 @@ export default function Stores({ activeCategory, searchField }) {
     );
   });
 
+  if (isLoading) {
+    return (
+      <SafeAreaView
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "black",
+          paddingTop: StatusBar.currenHeight,
+        }}
+      >
+        <View>
+          <ActivityIndicator size="large" color="#d946ef" />
+          <Text style={{ color: "white", fontSize: 20 }}>Loading...</Text>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
   return (
-    // loading screen here
     <View>
       <Text
         style={{
@@ -92,7 +121,6 @@ const StoreCard = ({ item }) => {
           height: 50,
           borderColor: "white",
           borderWidth: 1,
-          // paddingVertical: 15,
           paddingHorizontal: 10,
           borderRadius: 30,
           // marginHorizontal: 10,
@@ -106,10 +134,11 @@ const StoreCard = ({ item }) => {
           backgroundColor: "#d946ef",
         }}
       >
-        {/* 
-      <Image /> 
-      */}
-        <Text style={{ color: "white" }}>
+        <Text
+          style={{
+            color: "white",
+          }}
+        >
           {item.name.length > 18 ? item.name.slice(0, 18) + "..." : item.name}
         </Text>
       </View>
